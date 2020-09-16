@@ -1,16 +1,23 @@
 import Vue from 'vue'
 import App from './App.vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 import '@/assets/css/main.css'
 import VueRouter from 'vue-router'
 // import store from './store/store'
 import store from './store/store.js'
+import BootstrapVue from 'bootstrap-vue'
+
 
 import axios from 'axios'
 
 Vue.use(VueRouter)
+Vue.use(BootstrapVue)
 
 Vue.config.productionTip = false
+
+
 
 const routes = [
   {
@@ -26,10 +33,17 @@ const routes = [
   {
     path: '/dashboard',
     name: 'dashboard',
+    component: () => import('./components/Dashboard.vue'),
     meta: {
       auth: true
     },
-    component: () => import('./components/Dashboard.vue')
+    children: [
+      {
+        path:'',
+        component: () => import('./components/dashboard/Home.vue')
+      }
+    ]
+    
   }
   
 

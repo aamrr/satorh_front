@@ -1,11 +1,17 @@
 <template>
     <div class="vue-tempalte">
+        <nav class="navbar nav">
+            <a class="navbar-brand" href="#">
+            <img src="@/assets/logo-satori.png" width="50" height="50" class="d-inline-block" alt="">
+            <span>RH</span>
+            </a>
+        </nav>
         <form @submit.prevent="login">
             <h3>Log In</h3>
 
             <div class="form-group">
-                <label>Email address</label>
-                <input v-model="email" type="email" class="form-control form-control-lg" />
+                <label>Email address or Login</label>
+                <input v-model="email" class="form-control form-control-lg" />
             </div>
 
             <div class="form-group">
@@ -62,6 +68,6 @@
         border-radius: 2rem;
         padding: 2rem;
         width: 27rem;
-        margin: 6rem auto;
+        margin: 7rem auto;
     }
 </style>

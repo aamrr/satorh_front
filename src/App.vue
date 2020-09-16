@@ -3,13 +3,7 @@
     <!-- <img alt="satori logo" src="./assets/logo-satori.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/> -->
 
-    <nav class="navbar nav">
-    <a class="navbar-brand" href="#">
-      <img src="./assets/logo-satori.png" width="50" height="50" class="d-inline-block" alt="">
-      <span>RH</span>
-      <button></button>
-    </a>
-  </nav>
+    
 
     <router-view></router-view>
   </div>
@@ -18,6 +12,7 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue';
 // import Login from './components/Login'
+
 
 export default {
   name: 'App',

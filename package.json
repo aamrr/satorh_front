@@ -9,8 +9,12 @@
   },
   "dependencies": {
     "axios": "^0.20.0",
+    "b-sidebar": "^1.2.1",
     "bootstrap": "^4.5.2",
+    "bootstrap-vue": "^2.16.0",
     "core-js": "^3.6.5",
+    "gridjs-vue": "^0.5.2",
+    "resolve-url-loader": "^3.1.1",
     "vue": "^2.6.11",
     "vue-router": "^3.4.3",
     "vuex": "^3.5.1"

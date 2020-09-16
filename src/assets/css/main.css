@@ -5,7 +5,7 @@
   body {
     background: #fce525 !important;
     min-height: 100vh;
-    display: flex;
+    /* display: flex; */
     font-weight: 400;
   }
   
