@@ -1,7 +1,7 @@
 <template>
     <div>
         <div>
-            <b-navbar style="box-shadow: 0 4px 2px -2px gray;" toggleable="lg" type="dark" class="px-2" variant="dark">
+            <b-navbar style="box-shadow: 0 4px 2px -2px gray" toggleable="lg" type="dark" class="px-2" variant="dark">
                 <button @click="activateSidebar" class="side-toggle-button">☰</button>
                 <b-navbar-brand href="#"><img width="50" height="50" src="@/assets/logo-satori.png"></b-navbar-brand>
 
@@ -17,20 +17,20 @@
                 <b-navbar-nav class="ml-auto">
                     
 
-                    <b-nav-item-dropdown text="Lang" right>
+                    <!-- <b-nav-item-dropdown text="Lang" right>
                     <b-dropdown-item href="#">EN</b-dropdown-item>
                     <b-dropdown-item href="#">ES</b-dropdown-item>
                     <b-dropdown-item href="#">RU</b-dropdown-item>
                     <b-dropdown-item href="#">FA</b-dropdown-item>
-                    </b-nav-item-dropdown>
+                    </b-nav-item-dropdown> -->
 
                     <b-nav-item-dropdown right>
                     <!-- Using 'button-content' slot -->
                     <template v-slot:button-content>
-                        <em>User</em>
+                        <em>{{ name }}</em>
                     </template>
                     <b-dropdown-item href="#">Profile</b-dropdown-item>
-                    <b-dropdown-item href="#">Sign Out</b-dropdown-item>
+                    <b-dropdown-item @click="logout">Sign Out</b-dropdown-item>
                     </b-nav-item-dropdown>
                 </b-navbar-nav>
                 </b-collapse>
@@ -44,7 +44,7 @@
                         <span class="fas fa-caret-right"></span></a>
                         <transition name="expand" appear="">
                             <ul v-if="collabActive"> 
-                                <li>Dashboard</li>
+                                <router-link to="/dashboard"><li>Dashboard</li></router-link>
                                 <li>Collaborateurs</li>
                                 <li>Archvie</li>
                             </ul>
@@ -77,14 +77,22 @@ export default {
     data(){
         return{
             isActive: false,
-            collabActive: false
+            collabActive: false,
+            name: ''
         }
     },
     methods:{
         activateSidebar(){
             this.isActive = !this.isActive;
             this.$emit('sideBarActive');
+        },
+        logout(){
+            this.$store
+                    .dispatch('logout')
         }
+    },
+    created(){
+        this.name = JSON.parse(localStorage.getItem('user')).user.name;
     }
     
 }
@@ -120,11 +128,12 @@ template{
     display: block;
 }
 
- #sidebar-variant>ul>li>ul>li{
-     color: white;
+ #sidebar-variant>ul>li>ul li{
+     color: white !important;
      list-style: none;
      padding: 15px 10px;
  }
+
 
  #sidebar-variant>ul>li>a{
      display: block;
@@ -148,7 +157,7 @@ template{
 
  }
 
- #sidebar-variant>ul>li>a:hover, #sidebar-variant>ul>li>ul>li:hover{
+ #sidebar-variant>ul>li>a:hover, #sidebar-variant>ul>li>ul li:hover{
      color: #fce525;
      background: #a8a8a0;
  }

@@ -12,6 +12,11 @@ import BootstrapVue from 'bootstrap-vue'
 
 import axios from 'axios'
 
+window.axios = require('axios');
+window.axios.defaults.withCredentials = true;
+
+axios.defaults.baseURL = 'http://localhost:8000/api'
+
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 
@@ -32,7 +37,6 @@ const routes = [
   },
   {
     path: '/dashboard',
-    name: 'dashboard',
     component: () => import('./components/Dashboard.vue'),
     meta: {
       auth: true

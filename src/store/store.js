@@ -3,10 +3,10 @@ import Vuex from 'vuex'
 import axios from 'axios'
 
 Vue.use(Vuex)
-window.axios = require('axios');
-window.axios.defaults.withCredentials = true;
+// window.axios = require('axios');
+// window.axios.defaults.withCredentials = true;
 
-axios.defaults.baseURL = 'http://localhost:8000/api'
+// axios.defaults.baseURL = 'http://localhost:8000/api'
 
 export default new Vuex.Store({
     state: {
